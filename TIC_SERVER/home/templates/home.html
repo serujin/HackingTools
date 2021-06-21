@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Home{% endblock %}
+{% block extra_header %}
+<style>
+  img,
+  .extra-text-container {
+    border-radius: 5%;
+  }
+  a {
+    padding-bottom: 1%;
+  }
+</style>
+{% endblock %}
+{% block content %}
+{% load static %}
+<div class="row">
+  <a class="col-2" href="{% url 'parser' %}" target="_blank" style="text-decoration: none; color: white;">
+    <div class="col-12 h-100 d-flex align-items-center extra-text-container" style="background-color: grey;">
+      <p class="text-center" style="font-size: 3vw; padding: 15% 0;">Nessus Parser</p>
+    </div>
+  </a>
+</div>
+{% endblock %}

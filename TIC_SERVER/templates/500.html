@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}500 Error{% endblock %}
+{% block extra_header %}
+<style>
+  a {
+    text-decoration: none;
+  }
+</style>
+{% endblock %}
+{% block content %}
+<h1>Oops, parece que ha habido un error</h1>
+<h3>Inténtalo de nuevo, si el error persiste, por favor, notifica al administrador</h3>
+<br><br>
+<a class="h4 text-secondary" href="/">Ir al menú principal</a>
+{% endblock %}

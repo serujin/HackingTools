@@ -1,0 +1,8 @@
+Logos: 400x400px
+
+<link rel="shortcut icon" href="{% stati 'favicon.ico' %}" type="image/x-icon">
+<link rel="icon" href="{% stati 'favicon.ico' %}" type="image/x-icon">
+
+<a class="col-2" href="http://127.0.0.1" target="_blank">
+    <img class="col-12" src="{% stati 'mobsf_logo.png' %}">
+</a>

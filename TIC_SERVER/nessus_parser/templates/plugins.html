@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Nessus Parser{% endblock %}
+{% block content_title %}Revisión del informe{% endblock %}
+{% block content %}
+{% if error == True %}
+<script>
+    alert('Todos los plugins deben estar clasificados, revisa los tipos y vuelve a intentarlo.')
+</script>
+{% endif %}
+<div class="row">
+    <div class="row my-2 justify-content-end px-0" style="margin-left: 0px;">
+        <h3 class="col-12 text-center mb-4">Marcar los hosts autenticados</h3>
+        {% for host_form in hosts_forms %}
+        <div class="input-group justify-content-end px-0" style="width: 25%;">
+            {{ host_form }}
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row mx-auto">
+        <h3 class="col-12 text-center mb-4">Clasificación de plugins</h3>
+        <h3 class="col-1 text-center">ID</h3>
+        <h3 class="col-8 text-center">Nombre</h3>
+        <select id="filter_selections" class="col-3 text-center h3" style="border: 0px; text-align-last: center; margin-left: -0.9vw;" onchange="filter_categories()"> 
+            <option value="T" selected>Tipo</option>
+            <option value="NaN">Not classified</option>
+            <option value="OSP">Operative System Patch</option>
+            <option value="C">Config</option>
+            <option value="CY">Cypher</option>
+            <option value="PV">Product Vulnerability</option>
+            <option value="OOS">Out of Support</option>
+        </select>
+</div>
+<div class="row mx-auto justify-content-end">
+{% for form in forms %}
+<div class="input-group">
+    {{ form }}
+</div>
+{% endfor %}
+<form class="row mx-auto justify-content-between" method="post" action="{% url 'download' %}">
+    {% csrf_token %}
+    <a class="btn btn-secondary my-4 py-1 col-2" href="{% url 'parser' %}" style="font-size: 1.5vw;">Volver</a>
+    <input type="submit" class="btn btn-secondary my-4 py-1 col-2" value="Descargar Informe" style="font-size: 1.5vw;">
+</form>
+</div>
+<script>
+    
+    function filter_categories() {
+        filter_values = document.getElementById("filter_selections").childNodes
+        filter_selected = ""
+        Array.from(filter_values).forEach(element => {
+            if (element.selected == true) {
+                filter_selected = element.text
+            }  
+        })
+        selected_values = document.getElementsByClassName("category")
+        if(filter_selected == "Tipo") {
+            for(let i = 0; i < selected_values.length; i++) {
+                selected_values[i].parentNode.style.display = "flex"
+            }   
+        } else {
+            for(let i = 0; i < selected_values.length; i++) {
+                Array.from(selected_values[i].childNodes).forEach(element => {
+                    if (element.selected == true) {
+                        if (element.text == filter_selected) {
+                            selected_values[i].parentNode.style.display = "flex"
+                        } else {
+                            selected_values[i].parentNode.style.display = "none"
+                        }
+                    }  
+                })
+            } 
+        }
+    }
+
+    function update_plugin(caller) {
+        console.log("IM CALLING")
+        selector = caller.parentNode.childNodes[5]
+        data = {  
+            "id" : caller.parentNode.childNodes[1].value,
+            "category" : selector.options[selector.selectedIndex].value
+        }
+        ajax_post("{% url 'update' %}", data)
+        filter_categories()
+    }
+
+    function update_host(caller) {
+        data = {
+            "host": caller.parentNode.childNodes[1].value,
+            "auth": caller.options[caller.selectedIndex].value
+        }
+        console.log(data)
+        ajax_post("{% url 'auth' %}", data)
+    }
+</script>
+{% endblock %}

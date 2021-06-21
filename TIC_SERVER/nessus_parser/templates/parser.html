@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Nessus Parser{% endblock %}
+{% block content_title %}Nessus Parser{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+    {% if form.errors %}
+    {% for field in form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <h3>Generación del informe</h3>
+    <form method="post" enctype="multipart/form-data" action="{% url 'conversor' %}">
+        {% csrf_token %}
+        <div class="mb-3 mx-5" style="width: 30vw;">
+            <div class="row mt-4 justify-content-between" style="margin: 0% 0% 0.5% 0%;">
+                <select name="select_scan_type" class="col-2 form-select" style="width: 30%;">
+                    <option value="NaN" selected>Tipo de escaneo</option>
+                    <option value="INFRA">INFRA</option>
+                </select>
+                <input name="app_name" class="col-9 form-control" type="text" placeholder="Nombre de la aplicación escaneada" style="width: 70%;" required>
+            </div>
+            {{ form.file_name }}
+            <label for="formFile" class="form-label mt-2">Sube aquí tus archivos .nessus:</label>
+            {{ form.files }}
+            <input type="submit" class="btn btn-dark mt-2" value="Parsear">
+        </div>
+    </form>
+    <h3>Gestión de la base de datos</h3>
+    {% if db_form.errors %}
+    {% for field in db_form %}
+    {% for error in field.errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% for error in db_form.non_field_errors %}
+    <div class="alert alert-danger">
+        <strong>{{ error|escape }}</strong>
+    </div>
+    {% endfor %}
+    {% endif %}
+    <form method="post" enctype="multipart/form-data" action="{% url 'db_upload' %}">
+        {% csrf_token %}
+        <div class="mb-3 mx-5" style="width: 30vw;">
+            <label for="formFile" class="form-label">Sube aquí tu base de datos:</label>
+            {{ db_form.db_files }}
+            <input type="submit" class="btn btn-dark mt-3" value="Cargar Base de Datos">
+        </div>
+    </form>
+    <form method="post" action="{% url 'db_download' %}">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-dark mx-5" value="Descargar Base de Datos">
+    </form>    
+</div>
+{% if alert == True %}
+<script>
+    alert('{{ alert_msg }}')
+</script>
+{% endif %}
+{% endblock %}

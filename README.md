@@ -1,13 +1,7 @@
 # HackingTools
-This is a simple project to have all your tools on the same site.
+This is a simple project to have all your tools on the same site, as a present there's a Nessus File Parser included 😜
 
 ## This project is pretty scalable
-You can tell me whatever you want and I will take a look to add it.
-
-## Usage
-- Create a python virtual enviroment
-- Install all requirements (requirements.txt)
-- Create a service or start manually the server on a terminal
-- Hack!!
+You can tell me whatever you want (contact info on my profile) and I will take a look to add it.
 
 ## This is for the community!! ✌

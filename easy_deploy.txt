@@ -1,0 +1,15 @@
+Hi, if you are reading this is because you need some help to deploy the project, let's see what can we do:
+
+- Open a terminal.
+- Clone this repository on your machine (git clone https://github.com/serujin/HackingTools.git).
+- Go to the directory created (cd HackingTools).
+- Create a virtual enviroment to allow Django do his magic and activate it (https://help.dreamhost.com/hc/es/articles/115000695551-Instalar-y-usar-virtualenv-con-Python-3).
+- Install all requirements (pip3 install -r requirements.txt).
+- Go to the folder TIC_SERVER (cd TIC_SERVER).
+- Run some commands before starting:
+	- python3 .\manage.py makemigrations (check for changes on the DB)
+	- python3 .\manage.py migrate (apply those changes on the DB)
+	- python3 .\manage.py collectstatic (check if new files are added)
+- Create a service or start manually the server on a terminal (command to start: python3 .\manage.py runserver "IP":"PORT")*
+
+*Obviously, change the port and the ip to the desired ones.

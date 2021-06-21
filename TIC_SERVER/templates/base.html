@@ -12,6 +12,9 @@
         integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
         crossorigin="anonymous"></script>    
     {% block extra_header %}{% endblock %}
+    {% load static %}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <style>
         *::-webkit-scrollbar {
             display: none;

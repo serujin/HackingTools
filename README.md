@@ -5,4 +5,4 @@ This is a simple project to have all your tools on the same site, as a present t
 You can tell me whatever you want (contact info on my profile) and I will take a look to add it.
 
 ## This is for the community!! ✌
-There's a little guide to help people to deploy the project.
+There's a short guide to help people to deploy the project.

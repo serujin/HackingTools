@@ -14,10 +14,8 @@
 {% block content %}
 {% load static %}
 <div class="row">
-  <a class="col-2" href="{% url 'parser' %}" target="_blank" style="text-decoration: none; color: white;">
-    <div class="col-12 h-100 d-flex align-items-center extra-text-container" style="background-color: grey;">
-      <p class="text-center" style="font-size: 3vw; padding: 15% 0;">Nessus Parser</p>
-    </div>
+  <a class="col-2" href="{% url 'parser' %}" target="_blank">
+    <img class="col-12" src="{% static 'nessus_parser_logo.png' %}">
   </a>
   <!-- ADD YOUR TOOLS RIGHT HERE -->
 </div>

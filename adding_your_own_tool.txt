@@ -9,9 +9,9 @@ If you want to use an image in the home page:
 If you want to use a text in the home page:
 	- Add this to HackingTools/TIC_SERVER/home/templates/home.html file right under the comment:
 		<a class="col-2" href="CHANGE_THIS_TO_YOUR_URL" target="_blank" style="text-decoration: none; color: white;">
-    			<div class="col-12 h-100 d-flex align-items-center extra-text-container" style="background-color: grey;">
-      				<p class="text-center" style="font-size: 3vw; padding: 15% 0;">CHANGE_THIS_TO_THE_APP_NAME</p>
-    			</div>
+    			<div class="col-12 h-100 d-flex align-items-center extra-text-container text-center" style="background-color: grey;">
+		     		<p class="text-center" style="font-size: 2.6vw; word-wrap: normal; padding: 0 5%;">YOUR APP NAME</p>
+		    	</div>
   		</a>
 
 Restart the project.

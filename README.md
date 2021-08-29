@@ -20,6 +20,6 @@ Lo hago por diversión en mis ratos libres, no esperes actualizaciones diarias.
 Puedes contarme algo interesante para añadir (información de contacto en mi perfil) y le echaré un vistazo.
 
 ## ¡¡Creado para la comunidad!! ✌
-Hay una pequeña guía para desplegar el proyecto.
+Hay una pequeña guía en inglés para desplegar el proyecto.
 
 No dudes en crear un issue si ves algo mal.
